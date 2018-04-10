@@ -1,27 +1,62 @@
-body {
+html, body {
+    height: 100%;
     margin: 0px;
     font-family: "Courier New", Helvetica, sans-serif;
 }
 
-header {
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.wrap {
+header {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+
+.page-content {
     width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
     margin: 0 auto;
+}
+
+footer {
+    height: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    vertical-align: middle;
 }
 
 .left_menu {
     width: calc(20%);
     padding: 0 10px;
     float: left;
-    height: 500px;
 }
+
+    .left_menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .left_menu li {
+        margin: 5px 0px;
+    }
 
 .content {
     width: calc(80% - 20px);
     float: left;
-    height: 500px;
 }
 
 #table_wrapper {
@@ -49,13 +84,6 @@ th {
     text-align: left;
     background-color: #4CAF50;
     color: white;
-}
-
-footer {
-    clear: left;
-    background-color: #333333;
-    color: white;
-    text-align: center;
 }
 
 .topnav {
@@ -86,15 +114,6 @@ footer {
 .topnav .icon {
     display: none;
 }
-
-.wrapper {
-    width: 1000px;
-    height: 400px;
-    margin: auto;
-    border: red 2px solid;
-}
-
-
 
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {display: none;}
