@@ -38,19 +38,19 @@ footer p {
     vertical-align: middle;
 }
 
-.left_menu {
+.left-menu {
     width: calc(20%);
     padding: 0 10px;
     float: left;
 }
 
-    .left_menu ul {
+    .leftmenu ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
     }
 
-    .left_menu li {
+    .left-menu li {
         margin: 5px 0px;
     }
 

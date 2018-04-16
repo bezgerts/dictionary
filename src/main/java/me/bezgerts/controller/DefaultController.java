@@ -10,4 +10,9 @@ public class DefaultController {
     public String home() {
         return "home";
     }
+
+    @GetMapping("/blank")
+    public String blankPage() {
+        return "_blank";
+    }
 }

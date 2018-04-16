@@ -1,39 +1,19 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="fragments/header :: header-meta"/>
     <title>Английский частотный словарь</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="/css/style.css" rel="stylesheet"/>
-    <script type="text/javascript" src="/js/script.js"></script>
 
 </head>
 <body>
 <div class="wrapper">
-    <header>
-        <div class="topnav" id="myTopnav">
-            <a href="#home" class="active">Главная</a>
-            <a href="About">О приложении</a>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-        </div>
-    </header>
+    <header th:replace="fragments/header :: header"></header>
 
     <div class="page-content">
 
-        <aside class="left_menu">
-            <h1>Левое меню</h1>
-            <ul>
-                <li><a href="#">Английский словарь</a></li>
-                <li><a href="#">Французский словарь</a></li>
-                <li><a href="#">Немецкий словарь</a></li>
-            </ul>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci consequatur cupiditate, est
-                fugiat hic inventore itaque labore maxime, nemo obcaecati reiciendis velit veritatis!
-                Consequuntur distinctio nesciunt saepe ut voluptate?
-            </p>
-        </aside>
+       <div th:replace="fragments/header :: left-menu" />
 
         <div class="content">
             <h1>Частотный словарь английских слов</h1>
@@ -74,9 +54,7 @@
         </div>
     </div>
 
-    <footer>
-        <div class="copyright"><p>&#169; bezgerts.me 2018</p></div>
-    </footer>
+    <footer th:replace="fragments/footer :: footer" />
 </div>
 </body>
 </html>
