@@ -10,8 +10,8 @@
 
     <context:annotation-config />
     <context:component-scan base-package="me.bezgerts" />
-    <context:property-placeholder location="application.properties" />
-    <context:property-placeholder location="db.properties" />
+    <context:property-placeholder location="classpath:application.properties" />
+    <context:property-placeholder location="classpath:db.properties" />
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 </beans>
