@@ -12,11 +12,15 @@ public class Word {
     @Column(name = "WORD")
     private String word;
 
+    @Column(name = "RUSSIAN_TRANSLATION")
+    private String translation;
+
     public Word() {
     }
 
-    public Word(String word) {
+    public Word(String word, String translation) {
         this.word = word;
+        this.translation = translation;
     }
 
     public Long getId() {
@@ -35,11 +39,20 @@ public class Word {
         this.word = word;
     }
 
+    public String getTranslation() {
+        return translation;
+    }
+
+    public void setTranslation(String translation) {
+        this.translation = translation;
+    }
+
     @Override
     public String toString() {
         return "Word{" +
                 "id=" + id +
                 ", word='" + word + '\'' +
+                ", translation='" + translation + '\'' +
                 '}';
     }
 }

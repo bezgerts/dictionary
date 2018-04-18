@@ -14,8 +14,8 @@
 
     <header th:fragment="header">
         <div th:fragment="header" class="topnav" id="myTopnav">
-            <a href="#home" class="active">Главная</a>
-            <a href="About">О приложении</a>
+            <a href="/index">Главная</a>
+            <a href="/about">О приложении</a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
     </header>
@@ -23,7 +23,7 @@
         <aside class="left-menu" th:fragment="left-menu">
             <h1>Левое меню</h1>
             <ul>
-                <li><a href="#">Английский словарь</a></li>
+                <li><a href="/words">Английский словарь</a></li>
                 <li><a href="#">Французский словарь</a></li>
                 <li><a href="#">Немецкий словарь</a></li>
             </ul>

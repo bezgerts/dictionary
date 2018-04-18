@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <div th:replace="fragments/header :: header-meta"/>
+    <title>Добавление слова</title>
+</head>
+<body>
+<div class="wrapper">
+    <header th:replace="fragments/header :: header"></header>
+
+    <div class="page-content">
+
+        <div th:replace="fragments/header :: left-menu" />
+
+        <div class="content">
+            <h1>Добавление слова</h1>
+            <form role="form" th:object="${word}" th:action="@{/words}" method="post">
+                <div>
+                    <p><input type="hidden" class="form-control" th:field="*{id}" /></p>
+                    <p><label>Слово на английском: </label><input type="text" th:field="*{word}" /></p>
+                    <p><label>Перевод на русском: </label><input type="text" th:field="*{translation}" /></p>
+                    <p><button type="submit">Сохранить</button></p>
+                    <p><a href="words.html" th:href="@{/words}">Назад к списку слов</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer th:replace="fragments/footer :: footer" />
+</div>
+</body>
+</html>
