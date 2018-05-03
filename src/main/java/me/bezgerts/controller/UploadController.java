@@ -45,6 +45,6 @@ public class UploadController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/upload";
+        return "redirect:upload";
     }
 }
