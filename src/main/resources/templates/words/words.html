@@ -19,8 +19,9 @@
             <h1>Частотный словарь английских слов</h1>
             <div style="margin: 20px 0px;">
                 <a href="/words/create.html" th:href="@{/words/create}">Добавить слово</a>
+                <p>Последняя страница: <span th:text="${lastPageNumber}">100500</span></p>
+                <p>Всего слов: <span th:text="${countOfAllWords}">100500</span></p>
             </div>
-
             <div id="table_wrapper" th:if="${not #lists.isEmpty(words)}">
                 <table>
                     <thead>

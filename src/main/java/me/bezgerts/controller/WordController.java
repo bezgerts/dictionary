@@ -5,10 +5,7 @@ import me.bezgerts.service.word.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class WordController {
@@ -17,8 +14,19 @@ public class WordController {
     private WordService wordService;
 
     @RequestMapping(path = "/words", method = RequestMethod.GET)
-    public String getAllWords(Model model) {
-        model.addAttribute("words", wordService.getAll());
+    public String getAllWords(@RequestParam(value = "firstResult", required = false) Integer firstResult,
+                              @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                              Model model) {
+
+        if (firstResult != null && pageSize != null) {
+            model.addAttribute("words", wordService.getWordsWithPagination(firstResult, pageSize));
+            model.addAttribute("lastPageNumber", wordService.getLastPageNumber(pageSize));
+        } else {
+            model.addAttribute("words", wordService.getWordsWithPagination(0, 10));
+            model.addAttribute("lastPageNumber", wordService.getLastPageNumber(10));
+        }
+
+        model.addAttribute("countOfAllWords", wordService.getCountOfAllWords());
         return "words/words";
     }
 
