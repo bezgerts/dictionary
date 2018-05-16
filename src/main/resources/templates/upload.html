@@ -11,17 +11,22 @@
 
     <div class="page-content">
 
-        <div th:replace="fragments/header :: left-menu" />
 
-        <div class="content">
-            <h1>Частотный словарь английских слов</h1>
-            <div th:if="${message}">
-                <h2 th:text="${message}"/>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <h1 class="h3 font-weight-normal">Загрузить файл</h1>
+                    <form method="POST" action="/upload" enctype="multipart/form-data">
+                        <div th:if="${message}">
+                            <h1 class="h4 font-weight-normal" th:text="${message}"/>
+                        </div>
+                        <label for="file">Выбор файла: </label>
+                        <input type="file" class="form-control-file" id="file" name="file" />
+                        <button type="submit" class="btn btn-primary">Загрузить</button>
+                        <a class="btn btn-link" href="/words" th:href="@{/words}" role="button">Назад</a>
+                    </form>
+                </div>
             </div>
-            <form method="POST" action="/upload" enctype="multipart/form-data">
-                <input type="file" name="file" /><br/><br/>
-                <input type="submit" value="Submit" />
-            </form>
         </div>
     </div>
 

@@ -8,7 +8,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.thymeleaf.dialect.springdata.SpringDataDialect;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -45,13 +48,5 @@ public class AppConfig {
         localSessionFactoryBean.setHibernateProperties(props);
         localSessionFactoryBean.setPackagesToScan("me.bezgerts.domain");
         return localSessionFactoryBean;
-    }
-
-    @Bean
-    public HibernateTransactionManager getTransactionManager() {
-        HibernateTransactionManager hibernateTransactionManager =
-                new HibernateTransactionManager();
-        hibernateTransactionManager.setSessionFactory(getSessionFactory().getObject());
-        return hibernateTransactionManager;
     }
 }

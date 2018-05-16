@@ -3,6 +3,8 @@ package me.bezgerts.controller;
 import me.bezgerts.domain.Word;
 import me.bezgerts.service.word.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +16,18 @@ public class WordController {
     private WordService wordService;
 
     @RequestMapping(path = "/words", method = RequestMethod.GET)
-    public String getAllWords(@RequestParam(value = "firstResult", required = false) Integer firstResult,
-                              @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                              Model model) {
+    public String getWords(@RequestParam(value = "page", required = false) Integer page,
+                           @RequestParam(value = "size", required = false) Integer size,
+                           Model model) {
 
-        if (firstResult != null && pageSize != null) {
-            model.addAttribute("words", wordService.getWordsWithPagination(firstResult, pageSize));
-            model.addAttribute("lastPageNumber", wordService.getLastPageNumber(pageSize));
+        if (page != null && size != null) {
+            Page<Word> words = wordService.getWords(new PageRequest(page, size));
+            model.addAttribute("words", words);
         } else {
-            model.addAttribute("words", wordService.getWordsWithPagination(0, 10));
-            model.addAttribute("lastPageNumber", wordService.getLastPageNumber(10));
+            Page<Word> words = wordService.getWords(new PageRequest(0, 100));
+            model.addAttribute("words", wordService.getWords(new PageRequest(0, 100)));
         }
 
-        model.addAttribute("countOfAllWords", wordService.getCountOfAllWords());
         return "words/words";
     }
 
@@ -38,20 +39,20 @@ public class WordController {
 
     @RequestMapping(path = "/words", method = RequestMethod.POST)
     public String createWord(Word word) {
-        wordService.saveOrUpdate(word);
+        wordService.save(word);
         return "redirect:/words";
     }
 
     @RequestMapping(path = "/words/edit/{id}", method = RequestMethod.GET)
     public String editWord(Model model, @PathVariable(value = "id") String id) {
-        model.addAttribute("word", wordService.get(Long.valueOf(id)));
+        model.addAttribute("word", wordService.find(Long.valueOf(id)));
         return "words/edit";
     }
 
     @RequestMapping(path = "/words/delete/{id}", method = RequestMethod.GET)
     public String deleteWord(@PathVariable(name = "id") String id) {;
-        Word word = wordService.get(Long.valueOf(id));
-        wordService.remove(word);
+        Word word = wordService.find(Long.valueOf(id));
+        wordService.delete(word);
         return "redirect:/words";
     }
 }

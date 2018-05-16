@@ -3,6 +3,12 @@
 <head>
     <div th:fragment="header-css">
         <link type="text/css" href="/css/style.css" rel="stylesheet"/>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="~/css/bootstrap.min.css" th:href="@{~/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+
+        <!-- Datatables Pagination CSS -->
+        <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     </div>
 
     <div th:fragment="header-meta">
@@ -13,21 +19,30 @@
 <body>
 
     <header th:fragment="header">
-        <div th:fragment="header" class="topnav" id="myTopnav">
-            <a href="/index">Главная</a>
-            <a href="/about">О приложении</a>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Частотный словарь</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/words">Словарь</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">О приложении</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Поиск..." aria-label="Search" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+                </form>
+            </div>
+        </nav>
     </header>
-
-        <aside class="left-menu" th:fragment="left-menu">
-            <h1>Левое меню</h1>
-            <ul>
-                <li><a href="/words">Английский словарь</a></li>
-                <li><a href="#">Французский словарь</a></li>
-                <li><a href="#">Немецкий словарь</a></li>
-            </ul>
-        </aside>
 
 </body>
 </html>

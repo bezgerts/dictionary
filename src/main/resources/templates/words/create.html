@@ -11,20 +11,27 @@
 
     <div class="page-content">
 
-        <div th:replace="fragments/header :: left-menu" />
-
-        <div class="content">
-            <h1>Добавление слова</h1>
-            <form role="form" th:object="${word}" th:action="@{/words}" method="post">
-                <div>
-                    <p><input type="hidden" class="form-control" th:field="*{id}" /></p>
-                    <p><label>Слово на английском: </label><input type="text" th:field="*{word}" /></p>
-                    <p><label>Перевод на русском: </label><input type="text" th:field="*{translation}" /></p>
-                    <p><button type="submit">Сохранить</button></p>
-                    <p><a href="words.html" th:href="@{/words}">Назад к списку слов</a></p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <h1 class="h3 font-weight-normal">Добавление слова</h1>
+                    <form role="form" th:object="${word}" th:action="@{/words}" method="post">
+                        <input type="hidden" class="form-control" th:field="*{id}" />
+                        <div class="form-group">
+                            <label for="text">Введите слово на английском:</label>
+                            <input type="text" class="form-control" name="text" id="text" th:field="*{text}" placeholder="Слово на английском" />
+                        </div>
+                        <div class="form-group">
+                            <label for="translation">Введите перевод слова:</label>
+                            <input type="text" class="form-control" name="translation" id="translation" th:field="*{translation}" placeholder="Перевод слова" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <a class="btn btn-link" href="/words" th:href="@{/words}" role="button">Назад</a>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
+
     </div>
 
     <footer th:replace="fragments/footer :: footer" />

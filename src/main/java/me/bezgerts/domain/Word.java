@@ -3,23 +3,23 @@ package me.bezgerts.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="word")
+@Table(name="text")
 public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "WORD")
-    private String word;
+    @Column(name = "TEXT")
+    private String text;
 
-    @Column(name = "RUSSIAN_TRANSLATION")
+    @Column(name = "TRANSLATION")
     private String translation;
 
     public Word() {
     }
 
-    public Word(String word, String translation) {
-        this.word = word;
+    public Word(String text, String translation) {
+        this.text = text;
         this.translation = translation;
     }
 
@@ -31,12 +31,12 @@ public class Word {
         this.id = id;
     }
 
-    public String getWord() {
-        return word;
+    public String getText() {
+        return text;
     }
 
-    public void setWord(String word) {
-        this.word = word;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getTranslation() {
@@ -51,7 +51,7 @@ public class Word {
     public String toString() {
         return "Word{" +
                 "id=" + id +
-                ", word='" + word + '\'' +
+                ", text='" + text + '\'' +
                 ", translation='" + translation + '\'' +
                 '}';
     }
