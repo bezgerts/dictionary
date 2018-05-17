@@ -57,7 +57,11 @@
 
     <script>
         $(document).ready( function () {
-           $('#table_id').DataTable();
+           $('#table_id').DataTable( {
+               language: {
+                   search: "Поиск в таблице: "
+               }
+           });
         });
     </script>
 </div>
