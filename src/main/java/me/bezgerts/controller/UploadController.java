@@ -1,5 +1,6 @@
 package me.bezgerts.controller;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,6 +31,13 @@ public class UploadController {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Пожалуйста выберите файл для загрузки");
+            return "redirect:upload";
+        }
+
+        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+
+        if (!extension.equalsIgnoreCase("txt")) {
+            redirectAttributes.addFlashAttribute("message", "Пожалуйста выберите текстовый файл для загрузки (с расширением .txt)");
             return "redirect:upload";
         }
 
